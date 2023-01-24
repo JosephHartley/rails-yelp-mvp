@@ -3,11 +3,16 @@
 <%= render @restaurant %>
 
 <p><strong>Reviews</strong></p>
-<ul class="list-group">
+<ol class="list-group list-group-numbered">
   <% @restaurant.reviews.each do |review| %>
-    <li class="list-group-item"><%= review.content %></li>
+    <li class="list-group-item d-flex justify-content-between align-items-start">
+      <div class="ms-2 me-auto">
+        <%= review.content %>
+      </div>
+      <span class="badge bg-danger rounded-pill"><%= "#{review.rating} stars" %></span>
+    </li>
   <% end %>
-</ul>
+</ol>
 <br>
 <h2>Add a review:</h2>
 <%= render 'reviews/form' %>
